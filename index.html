@@ -1,0 +1,298 @@
+<!doctype html>
+<html class="no-js" lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seguridad informática</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Recopilación de artículos sobre seguridad informática">
+
+  <meta property="og:title" content="Seguridad informática">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<!-- Add your site or application content here -->
+<header>
+  <h1 class="titulo">Seguridad informática</h1>
+  <h2 class="subtitulo">Román Carceller Cheza</h2>
+</header>
+<main>
+  <section id="blog">
+    <header>
+      <h2>Blog</h2>
+    </header>
+    <nav>
+        <a href="#articulo1">Qué es un cortafuegos y para qué sirve</a>
+        <a href="#articulo2">Copias de seguridad</a>
+        <a href="#articulo3">Políticas de un cortafuegos</a>
+        <a href="#articulo4">MikroTik - Acceso HTTPS</a>
+        <a href="#articulo5">SAD - Unidad: Almacenamiento</a>
+    </nav>
+    <article>
+      <header>
+        <h3 id="articulo1">Qué es un cortafuegos y para qué sirve</h3>
+      </header>
+      <p>Hasta ahora hemos visto cómo minimizar el efecto de las amenazas que ponen en riesgo nuestros sistemas
+        informáticos
+        gracias a medidas como:
+      </p>
+      <ul class="listaimagen">
+        <li>La protección física y el control de las condiciones ambientales.</li>
+        <li>El control de acceso lógico al sistema y a la información.</li>
+        <li>El diseño de la política de almacenamiento, de respaldo de la información y de recuperación de los datos.</li>
+        <li>El uso de herramientas anti malware y actualización tanto del sistema operativo como de las aplicaciones.</li>
+        <li>La encriptación de los datos y protección de las comunicaciones.</li>
+      </ul>
+      <p>En esta unidad vamos a centrarnos en la <b>protección de nuestros equipos y servidores</b> frente a algunas de
+        las
+        amenazas que llegan a nuestros sistemas por medio de las redes de ordenadores. De esta forma reducimos el riesgo
+        de
+        pérdida y robo de información y de que nuestros equipos sean usados contra otros dispositivos de nuestra red o de
+        terceros. Por esto, vamos a estudiar la <b>configuración y uso</b> de los <b>cortafuegos</b>.
+      </p>
+
+      <div class="importante">
+        <p>
+          Un <b>cortafuegos</b>, o <b><q>firewall</q></b>, es un programa o dispositivo capaz de <b>examinar y procesar el
+          tráfico de red</b> de acuerdo a unas especificaciones establecidas por el propio sistema operativo o por un
+          usuario.
+        </p>
+      </div>
+      <p>
+        Es por esto que el cortafuegos reduce las posibilidades de éxito de muchos de los ataques que usan las redes de
+        ordenadores para alcanzar su objetivo. Veamos para qué sirven y para qué no sirven los cortafuegos
+        <em>tradicionales</em>:
+      </p>
+
+      <table class="listadosnumeros">
+        <thead>
+        <tr>
+          <th colspan="2">Cortafuegos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><b>Los cortafuegos controlan...</b></td>
+          <td><b>Ejemplos:</b></td>
+        </tr>
+        <tr>
+          <td>Los accesos a determinados equipos y servicios.</td>
+          <td>
+            <ul class="listadosnumeros">
+              <li>Bloqueo de accesos al servicio Telnet de uno de nuestros equipos.</li>
+              <li>No permitir las conexiones SSH a equipos de fuera de nuestra red.</li>
+              <li>Evitar que nuestros equipos infectados por una botnet ataquen a otros servidores.</li>
+              <li>Acceso de los usuarios a servicios no apropiados.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Los accesos desde determinados equipos y servicios.</td>
+          <td>
+            <ul class="listadosnumeros">
+              <li>Evitar accesos desde Internet a uno o varios equipos de nuestra red.</li>
+              <li>Permitir el acceso SSH a nuestro servidor únicamente desde el equipo de trabajo del administrador.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>El uso fraudulento de flujos de paquetes modificados a nivel de aplicación.</td>
+          <td>
+            <ul class="listadosnumeros">
+              <li>Rechazar paquetes que provienen de Internet que simulan pertenecer a una conexión iniciada dentro
+                de nuestra LAN.
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>El tráfico entre distintas redes.</td>
+          <td>
+            <ul class="listadosnumeros">
+              <li>Prohibir el tráfico desde Internet a una red de área local.</li>
+              <li>Solo permitir el tráfico de un determinado protocolo desde una red a otra.</li>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <p>
+        Tenemos que tener en cuenta que, aunque tengamos un cortafuegos bien configurado, aún podemos ser vulnerables
+        tanto
+        por amenazas que no usan la red, como por ataques a los equipos y servicios a los que el cortafuegos permite el
+        acceso. Veamos unos ejemplos.
+      </p>
+      <p>
+        El uso de los cortafuegos no protege totalmente tus equipos, por lo que no debes descuidar el resto de medidas de
+        seguridad vistas durante el curso.
+      </p>
+      <p>
+        Otra cuestión a tener en cuenta es que la configuración del cortafuegos no debe interferir en el correcto
+        funcionamiento de las aplicaciones y comunicaciones legítimas de tu sistema informático.
+        Por ejemplo, si bloqueas todo el acceso web a tu servidor evitarás ataques contra este servicio, pero también
+        impedirás que los usuarios de tu web accedan a tu servidor.
+      </p>
+      <p><a href="#blog">Volver al índice</a></p>
+
+    </article>
+    <article>
+      <header>
+        <h3 id="articulo2">Copias de seguridad</h3>
+      </header>
+      <p>
+        Sabemos que el activo más importante que tiene una empresa, organización o particular es la <em>información</em>.
+        Cuando se produce una pérdida de datos, principalmente, podemos emplear dos medidas de seguridad pasiva diferentes
+        para intentar recuperarla, <b>las copias de seguridad y las aplicaciones de recuperación de archivos</b> de
+        unidades
+        de almacenamiento.
+      </p>
+      <img class="imagen" src="multimedia/CopiaSegu-MapaMental.svg" alt="Mapa mental de las copias de seguridad">
+      <p><a href="#blog">Volver al índice</a></p>
+    </article>
+    <article>
+      <header>
+        <h3 id="articulo3">Políticas de un cortafuegos</h3>
+      </header>
+      <p>Cuando configuramos un cortafuegos seguimos una determinada política general a la que vamos añadiendo
+        excepciones. Veamos cuáles son estas políticas.
+      </p>
+      <dl>
+        <dt>Política restrictiva</dt>
+        <dd>
+          <p>
+            Configuramos el dispositivo de forma que, por defecto, se deniega todo el tráfico. Como es lógico,
+            tendremos que cambiar la configuración para ir añadiendo las excepciones, es decir, el tráfico que se acepta.
+          </p>
+          <p>
+            Es la política indicada en entornos que necesiten máxima seguridad, pero también la más restrictiva para los
+            usuarios, por lo que el administrador centrará su trabajo en averiguar cuáles son las necesidades de los
+            usuarios para adaptar la configuración.
+          </p>
+          Por ejemplo, aplicaremos esta política para el tráfico entrante, como el que llega a un router desde Internet.
+          <p>
+          </p>
+        </dd>
+        <dt>Política permisiva</dt>
+        <dd>
+          <p>
+            Configuramos el cortafuegos para que acepte todo el tráfico, luego, nos centraremos en adaptar la
+            configuración para incluir excepciones que limiten parte de él.
+          </p>
+          <p>
+            Debe usarse en entornos de confianza donde el riesgo no sea muy alto. En este caso, el administrador debe
+            averiguar cuáles son las amenazas para intentar controlarlas, aunque es difícil anticiparse a ellas.
+          </p>
+          <p>
+            Por ejemplo, aplicaremos esta política al tráfico saliente, como el que se genera en un equipo para acceder
+            a un servidor remoto.
+          </p>
+        </dd>
+      </dl>
+      <p><a href="#blog">Volver al índice</a></p>
+    </article>
+    <article>
+      <header>
+        <h3 id="articulo4">MikroTik - Acceso HTTPS</h3>
+      </header>
+      <p>
+        Para poder administrar un router MikroTik de manera segura desde un navegador web, necesitamos habilitar el
+        protocolo HTTPS. Los pasos a seguir son:
+      </p>
+      <ul>
+        <li>Se crea en Mikrotik un certificado raiz, que se autofirmará, ya que suponemos que la empresa no cuenta con
+          una estructura PKI propia.
+        </li>
+        <li>Se crea un nuevo certificado, esta vez para el servicio HTTPS que será firmado con el certificado raíz y se
+          validara.
+        </li>
+        <li>Se habilita el servicio HTTPS con el certificado correspondiente.</li>
+        <li>Se deshabilitan los servicios HTTP y Telnet.</li>
+      </ul>
+      <video controls>
+        <source src="multimedia/Mikrotik-HTTPS-baja.mp4" type="video/mp4">
+        Formato de video no soportado.
+      </video>
+      <p><a href="#blog">Volver al índice</a></p>
+    </article>
+    <article>
+      <header>
+        <h3 id="articulo5">SAD - Unidad: Almacenamiento</h3>
+      </header>
+      <p>
+        Este audio nos presenta la unidad de <q>Almacenamiento</q> del módulo <q>Seguridad y alta disponibilidad</q>
+        del CFGS <q>Administración de sistemas informáticos en red</q>. En esta unidad la parte práctica se trabaja
+        VirtualBox para virtualizar un router Mikrotik, el RAID (Ubuntu Server) y el NAS (OpenMediaVault), mientras que
+        la parte más teórica trabaja con recursos del INCIBE y herramientas como Trivinet y Twitter.
+      </p>
+      <audio controls>
+        <source src="multimedia/SAD-UD2-Almacenamiento.ogg" type="audio/ogg">
+        <source src="multimedia/SAD-UD2-Almacenamiento.ogg" type="audio/opus">
+        <source src="multimedia/SAD-UD2-Almacenamiento.mp3" type="audio/mp3">
+        Formato de audio incorrecto.
+      </audio>
+      <p><a href="#blog">Volver al índice</a></p>
+    </article>
+
+
+  </section> <!-- Fin Blog -->
+
+  <section id="contacto">
+    <header>
+      <h2>Contacto</h2>
+    </header>
+    <form action="aviso.html" method="post">
+      <p class="izquierda">Si quieres ponerte en contacto conmigo, rellena este formulario y te contestaré lo antes posible:</p>
+      <label for="nombre"> Nombre y apellidos: </label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre y apellidos">
+      <label for="correo"> Correo electrónico: </label>
+      <input type="email" id="correo" name="correo" required placeholder="usuario@dominio.es">
+      <label for="ambito"> Ámbito: </label>
+      <select id="ambito" name="ambito">
+        <option value="personal">Personal</option>
+        <option value="Laboral">Laboral</option>
+      </select>
+      <label for="mensaje"> Mensaje: </label>
+      <textarea id="mensaje" name="mensaje" required placeholder="Escribe aquí el mensaje" cols="30" rows="10"></textarea>
+      <input type="checkbox" id="terminos" name="terminos">
+      <label for="terminos"><a href="./legal.html">Aceptar términos y condiciones</a></label>
+      <button type="submit">Enviar</button>
+      <button type="reset">Limpiar</button>
+    </form>
+  </section> <!-- Fin formulario -->
+</main>
+<footer>
+  <article>
+    <h2>Redes sociales</h2>
+    <div class="redesSociales">
+      <a href="https://about.me/romancarceller" target="_blank"><p>about.me</p></a>
+      <a href="https://x.com/romancarceller" target="_blank">
+        <img class="logo" src="multimedia/twitter.webp" alt="Enlace a Twitter (X)">
+      </a>
+      <a href="https://www.youtube.com/romancarceller" target="_blank">
+        <img class="logo" src="multimedia/youtube.webp" alt="Enlace a Youtube">
+      </a>
+    </div>
+  </article>
+  <article>
+    <h2>Licencia de uso</h2>
+    <p>Seguridad informática © 2025 by
+      <a href="https://about.me/romancarceller" target="_blank">Román Carceller Cheza</a> is licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank">CC BY 4.0</a></p>
+    <p>Fuente logotipos: <a href="https://pixabay.com/es" target="_blank">Pixabay</a></p>
+  </article>
+</footer>
+<script src="js/app.js"></script>
+</body>
+</html>
